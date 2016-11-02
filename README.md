@@ -12,12 +12,10 @@ In this laboratory we will develop a basic polish notation calculator as display
 
 Evaluation criteria:
 
-Mínimu Requirements
+Requirements
 
-All basic functionalities of the calcultor should work as expected (sum, substract , multiply and divide).
-
-
-Challenges
+* All basic functionalities of the calcultor should work as expected (sum, substract , multiply and divide).dsfsdfad
+zxcadså∫å q
 asdas
 
 
