@@ -37,7 +37,7 @@ Basic Requirements
 Challenges
 
 
-* Add a new row with 3 buttons with the following functionalities  AC +/- .
+* Add a new row with 2 buttons with the following functionalities  AC +/-
 * Add a new row with 3 buttons with the following functionalities  SIN COS TAN
 * Add a new row with 3 buttons with the additional functionalities (free choice)
 
