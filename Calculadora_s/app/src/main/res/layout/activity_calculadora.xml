@@ -13,19 +13,18 @@
     tools:ignore="HardcodedText">
 
 
-
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/text_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.8"
+        android:autoSizeTextType="uniform"
         android:fontFamily="sans-serif-light"
         android:gravity="center_vertical|right"
-        android:autoSizeTextType="uniform"
         android:padding="10sp"
+        android:textColor="#ffffff"
         android:textSize="110sp"
         android:textStyle="bold"
-        android:textColor="#ffffff"
         tools:text="0" />
 
     <!-- 7 A 9 Y DIV -->
@@ -195,17 +194,17 @@
             android:text="3"/>
 
         <Button
-            android:id="@+id/btn_minus"
+            android:id="@+id/btn_subtract"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="6sp"
-            android:background="#2e2323"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="#2e2323"
+            android:padding="6sp"
+            android:text="-"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="-"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- 0, DECIMAL POINT Y SUM -->
@@ -241,17 +240,17 @@
             android:text="."/>
 
         <Button
-            android:id="@+id/btn_plus"
+            android:id="@+id/btn_sum"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="6sp"
-            android:background="#2e2323"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="#2e2323"
+            android:padding="6sp"
+            android:text="+"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="+"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- AC+, AC- -->
