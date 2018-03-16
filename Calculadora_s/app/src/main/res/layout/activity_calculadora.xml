@@ -13,7 +13,7 @@
     tools:ignore="HardcodedText">
 
 
-    <TextView
+    <EditText
         android:id="@+id/text_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -342,6 +342,18 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_off"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:background="@color/colorAccent"
+            android:padding="12sp"
+            android:text="Off"
+            android:textSize="100sp"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btn_pow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -368,17 +380,16 @@
             android:text="√"/>
 
         <Button
-            android:id="@+id/btn_abs"
+            android:id="@+id/btn_clear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="?attr/actionModeSplitBackground"
+            android:padding="12sp"
+            android:text="C"
             android:textSize="100sp"
-            android:text="abs"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>
