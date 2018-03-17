@@ -93,9 +93,9 @@ public class ButtonController {
             System.out.println("== info: DIVIDE()");
 
             if (Calculadora.getEntrada1() == 0.0 && Calculadora.getEntrada2() == 0.0) {
-                screencontroller.drawOnScreen("Undefined");
+                screencontroller.drawOnScreen("Undefined"); buttonService.clear_fun();
             } else if (Calculadora.getEntrada2() == 0.0) {
-                screencontroller.drawOnScreen("Infinity");
+                screencontroller.drawOnScreen("Infinity"); buttonService.clear_fun();
             } else {
                 screencontroller.drawOnScreen(String.valueOf(buttonService.divide()));
             }
@@ -159,14 +159,30 @@ public class ButtonController {
             Calculadora.setOperation(-1);
         }
         else if(Calculadora.getOperation()==-1){
-            String draw = screencontroller.getTextView()+buttonService.getText(button);
-            Calculadora.setEntrada1(Double.parseDouble(draw));
-            screencontroller.drawOnScreen(draw);
+            String inputText = buttonService.getText(button);
+            String textScreen = screencontroller.getTextView();
+
+            try {
+                Calculadora.setEntrada1(Double.parseDouble(inputText+textScreen));
+                screencontroller.drawOnScreen(inputText+textScreen);
+            }catch (Exception e){
+                Calculadora.setEntrada1(Double.parseDouble(inputText));
+                screencontroller.drawOnScreen(inputText);
+                System.err.println(e);
+            }
         }
         else if(Calculadora.getOperation()==-2){
-            String draw = screencontroller.getTextView()+buttonService.getText(button);
-            Calculadora.setEntrada2(Double.parseDouble(draw));
-            screencontroller.drawOnScreen(draw);
+            String inputText = buttonService.getText(button);
+            String textScreen = screencontroller.getTextView();
+
+            try {
+                Calculadora.setEntrada2(Double.parseDouble(inputText+textScreen));
+                screencontroller.drawOnScreen(inputText+textScreen);
+            }catch (Exception e){
+                Calculadora.setEntrada2(Double.parseDouble(inputText));
+                screencontroller.drawOnScreen(inputText);
+                System.err.println(e);
+            }
         }
         else{
             System.err.println("ButtonController - assigOperation: case else{ --- }");
