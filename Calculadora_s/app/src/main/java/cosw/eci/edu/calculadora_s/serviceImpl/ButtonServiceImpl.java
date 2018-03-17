@@ -38,7 +38,10 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double multiply() {
-        return 0;
+        Double num1 = Calculadora.getEntrada1();
+        Double num2 = Calculadora.getEntrada2();
+
+        return num1*num2;
     }
 
     @Override

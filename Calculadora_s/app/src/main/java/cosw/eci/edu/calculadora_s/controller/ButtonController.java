@@ -42,6 +42,7 @@ public class ButtonController {
                 divide();
                 break;
             case 1:
+                screencontroller.drawOnScreen(buttonService.getText(button));
                 multiply();
                 break;
             case 2:
@@ -92,20 +93,25 @@ public class ButtonController {
         }
         else{
             Calculadora.setEntrada2(Double.parseDouble(screencontroller.getTextView()));
-            Double res = Calculadora.getEntrada1()/Calculadora.getEntrada2();
 
-            screencontroller.drawOnScreen(String.valueOf(res));
-            System.out.println("===== 1: "+Calculadora.getEntrada1());
-            System.out.println("=======2: " +Calculadora.getEntrada2());
+            if(Calculadora.getEntrada1()==0.0 && Calculadora.getEntrada2()==0.0 ){ screencontroller.drawOnScreen("Undefined"); }
+            else if(Calculadora.getEntrada2()==0.0 ){ screencontroller.drawOnScreen("Infinity"); }
+            else{ screencontroller.drawOnScreen(String.valueOf(buttonService.divide())); }
             Calculadora.setOperation(-1);
         }
-
-
-
     }
 
     public static void multiply(){
-        buttonService.multiply();
+        if(Calculadora.getOperation()==-1){
+            Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+            Calculadora.setOperation(1);
+        }
+        else{
+            Calculadora.setEntrada2(Double.parseDouble(screencontroller.getTextView()));
+
+            screencontroller.drawOnScreen(String.valueOf(buttonService.multiply()));
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void subtract(){
