@@ -6,18 +6,125 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import cosw.eci.edu.calculadora_s.controller.ButtonController;
+import cosw.eci.edu.calculadora_s.controller.ScreenController;
+
 public class Calculadora extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText pantalla;
+    private ButtonController buttonController;
+    private ScreenController screenController;
+
+    public EditText pantalla;
     private Button sum, sub, div, mult, decimal, acsum, acsub;
-    private Button sin, cos, tan, offFun, pow2, root2, clearFun;
+    private Button sin, cos, tan, offFun, pow2, total, clearFun;
     private Button one, two, three, four, five, six, seven, eight, nine, zero;
-    private double entrada, salida; // datos de entrada, valores de resultado
+    private static double entrada1, salida, entrada2; // datos de entrada, valores de resultado
+    private static int operation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora);
+
+        findByIdElementsView();
+        setActionClickElementsView();
+
+        operation=-1; // -1: ninguna operacion pendiente
+
+        buttonController = new ButtonController(pantalla);
+        screenController = new ScreenController(pantalla);
+    }
+
+
+    // evento onClick
+    @Override
+    public void onClick(View view) {
+      // entrada = Double.parseDouble(pantalla.getText().toString());
+
+        switch (view.getId()) {
+            case R.id.btn_7:
+                buttonController.drawOnScreen(seven);
+                break;
+            case R.id.btn_8:
+                buttonController.drawOnScreen(eight);
+                break;
+            case R.id.btn_9:
+                buttonController.drawOnScreen(nine);
+                break;
+            case R.id.btn_4:
+                buttonController.drawOnScreen(four);
+                break;
+            case R.id.btn_5:
+                buttonController.drawOnScreen(five);
+                break;
+            case R.id.btn_6:
+                buttonController.drawOnScreen(six);
+                break;
+            case R.id.btn_1:
+                buttonController.drawOnScreen(one);
+                break;
+            case R.id.btn_2:
+                buttonController.drawOnScreen(two);
+                break;
+            case R.id.btn_3:
+                buttonController.drawOnScreen(three);
+                break;
+            case R.id.btn_0:
+                buttonController.drawOnScreen(zero);
+                break;
+            case R.id.btn_divide:
+                ButtonController.divide();
+                break;
+            case R.id.btn_multiply:
+                ButtonController.multiply();
+                break;
+            case R.id.btn_subtract:
+                ButtonController.subtract();
+                break;
+            case R.id.btn_decimal:
+                ButtonController.decimal_fun();
+                break;
+            case R.id.btn_sum:
+                ButtonController.sum_fun();
+                break;
+            case R.id.btn_ac_sum:
+                ButtonController.ac_sum();
+                break;
+            case R.id.btn_ac_sub:
+                ButtonController.ac_sub();
+                break;
+            case R.id.btn_sin:
+                ButtonController.sin_fun();
+                break;
+            case R.id.btn_cos:
+                ButtonController.cos_fun();
+                break;
+            case R.id.btn_tan:
+                ButtonController.tan_fun();
+                break;
+            case R.id.btn_off:
+                off_fun();
+                break;
+            case R.id.btn_pow:
+                ButtonController.pow_fun();
+                break;
+            case R.id.btn_total:
+                ButtonController.total_fun();
+                break;
+            case R.id.btn_clear:
+                ButtonController.clear_fun();
+                break;
+            default:
+                System.out.println("DEFAULT EN ONCLICK");
+                break;
+        }
+
+
+    }
+
+    private void findByIdElementsView(){
 
         pantalla = findViewById(R.id.text_result);
         sum = findViewById(R.id.btn_sum);
@@ -32,7 +139,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         tan = findViewById(R.id.btn_tan);
         offFun = findViewById(R.id.btn_off);
         pow2 = findViewById(R.id.btn_pow);
-        root2 = findViewById(R.id.btn_root);
+        total = findViewById(R.id.btn_total);
         clearFun = findViewById(R.id.btn_clear);
 
         one = findViewById(R.id.btn_1);
@@ -45,6 +152,9 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         eight = findViewById(R.id.btn_8);
         nine = findViewById(R.id.btn_9);
         zero = findViewById(R.id.btn_0);
+    }
+
+    public void setActionClickElementsView(){
 
         sum.setOnClickListener(this);
         sub.setOnClickListener(this);
@@ -58,7 +168,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         tan.setOnClickListener(this);
         offFun.setOnClickListener(this);
         pow2.setOnClickListener(this);
-        root2.setOnClickListener(this);
+        total.setOnClickListener(this);
         clearFun.setOnClickListener(this);
 
         one.setOnClickListener(this);
@@ -71,157 +181,40 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         eight.setOnClickListener(this);
         nine.setOnClickListener(this);
         zero.setOnClickListener(this);
-
-        System.out.println("despues de crear");
     }
 
-
-
-    // evento onClick
-    @Override
-    public void onClick(View view) {
-        System.out.println("ENTRA AL ONLCIK");
-       // entrada = Double.parseDouble(pantalla.getText().toString());
-
-
-        switch (view.getId()) {
-            case R.id.btn_7:
-                definir_salida(7);
-                break;
-            case R.id.btn_8:
-                definir_salida(8);
-                break;
-            case R.id.btn_9:
-                definir_salida(9);
-                break;
-            case R.id.btn_4:
-                definir_salida(4);
-                break;
-            case R.id.btn_5:
-                definir_salida(5);
-                break;
-            case R.id.btn_6:
-                definir_salida(6);
-                break;
-            case R.id.btn_1:
-                definir_salida(1);
-                break;
-            case R.id.btn_2:
-                definir_salida(2);
-                break;
-            case R.id.btn_3:
-                definir_salida(3);
-                break;
-            case R.id.btn_0:
-                definir_salida(0);
-                break;
-            case R.id.btn_divide:
-                divide();
-                break;
-            case R.id.btn_multiply:
-                multiply();
-                break;
-            case R.id.btn_subtract:
-                subtract();
-                break;
-            case R.id.btn_decimal:
-                decimal_fun();
-                break;
-            case R.id.btn_sum:
-                sum_fun();
-                break;
-            case R.id.btn_ac_sum:
-                ac_sum();
-                break;
-            case R.id.btn_ac_sub:
-                ac_sub();
-                break;
-            case R.id.btn_sin:
-                sin_fun();
-                break;
-            case R.id.btn_cos:
-                cos_fun();
-                break;
-            case R.id.btn_tan:
-                tan_fun();
-                break;
-            case R.id.btn_off:
-                off_fun();
-                break;
-            case R.id.btn_pow:
-                pow_fun();
-                break;
-            case R.id.btn_root:
-                root_fun();
-                break;
-            case R.id.btn_clear:
-                clear_fun();
-                break;
-            default:
-                System.out.println("DEFAULT EN ONCLICK");
-                break;
-        }
+    public static double getEntrada1() {
+        return entrada1;
     }
 
-    private void definir_salida(int number){
-        pantalla.setText("12345");
+    public static void setEntrada1(double entrada) {
+        Calculadora.entrada1 = entrada;
     }
 
-    private void divide(){
+    public static double getEntrada2() { return entrada2; }
 
+    public static void setEntrada2(double entrada) {
+        Calculadora.entrada2 = entrada;
     }
 
-    private void multiply(){
-
+    public static double getSalida() {
+        return salida;
     }
 
-    private void subtract(){
-
+    public static void setSalida(double salida) {
+        Calculadora.salida = salida;
     }
 
-    private void decimal_fun(){
-
+    public static int getOperation() {
+        return operation;
     }
 
-    private void sum_fun(){
-
-    }
-
-    private void ac_sum() {
-
-    }
-
-    private void ac_sub(){
-
-    }
-
-    private void sin_fun(){
-
-    }
-
-    private void cos_fun(){
-
-    }
-
-    private void tan_fun(){
-
+    public static void setOperation(int operation) {
+        Calculadora.operation = operation;
     }
 
     private void off_fun(){
         finish();
     }
-
-    private void pow_fun(){
-
-    }
-
-    private void root_fun(){
-
-    }
-
-    private void clear_fun(){
-
-    }
-
 
 }

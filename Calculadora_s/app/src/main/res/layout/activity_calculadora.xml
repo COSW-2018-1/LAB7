@@ -334,7 +334,7 @@
             android:text="tan"/>
     </LinearLayout>
 
-    <!-- pow2, root2, abs() -->
+    <!-- pow2, total, clear -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -367,17 +367,17 @@
             android:text="x²"/>
 
         <Button
-            android:id="@+id/btn_root"
+            android:id="@+id/btn_total"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="?android:attr/colorMultiSelectHighlight"
+            android:padding="12sp"
+            android:text="="
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="√"/>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_clear"
