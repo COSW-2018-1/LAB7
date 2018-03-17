@@ -26,138 +26,153 @@ public class ButtonController {
         screencontroller = new ScreenController(pantalla);
     }
 
-    public void drawOnScreen(Button button){
-        //Calculadora.setEntrada1(Calculadora.getEntrada2());
-        //Calculadora.setEntrada2(Double.parseDouble(button.getText().toString()));
-        //int number = buttonService.getNumber(button);
+    public static void drawOnScreen(Button button){
+        // 0:ninguna operacion pendiente, -1: generando primer parametro, -2: generando segundo parametro
 
-        //screencontroller.drawOnScreen(String.valueOf(number));
-
-        switch(Calculadora.getOperation()) {
-            case -1:
-                screencontroller.drawOnScreen(buttonService.getText(button));
-                break;
-            case 0:
-                screencontroller.drawOnScreen(buttonService.getText(button));
-                divide();
-                break;
-            case 1:
-                screencontroller.drawOnScreen(buttonService.getText(button));
-                multiply();
-                break;
-            case 2:
-                subtract();
-                break;
-            case 3:
-                decimal_fun();
-                break;
-            case 4:
-                sum_fun();
-                break;
-            case 5:
-                ac_sum();
-                break;
-            case 6:
-                ac_sub();
-                break;
-            case 7:
-                sin_fun();
-                break;
-            case 8:
-                cos_fun();
-                break;
-            case 9:
-                tan_fun();
-                break;
-            case 10:
-                pow_fun();
-                break;
-            case 11:
-                total_fun();
-                break;
-            case 12:
-                clear_fun();
-                break;
-            default:
-                System.out.println("DEFAULT EN DRAWSCREEN");
-                break;
-        }
-
-
-    }
-
-    public static void divide(){
-        if(Calculadora.getOperation()==-1){
-            Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
-            Calculadora.setOperation(0);
+        if(Calculadora.getOperation()<=0){
+            assigOperation(button);
         }
         else{
-            Calculadora.setEntrada2(Double.parseDouble(screencontroller.getTextView()));
+            switch(Calculadora.getOperation()) {
+                case 1:
+                    divide(button);
+                    break;
+                case 2:
+                    multiply(button);
+                    break;
+                case 3:
+                    subtract(button);
+                    break;
+                case 4:
+                    decimal_fun(button);
+                    break;
+                case 5:
+                    sum_fun(button);
+                    break;
+                case 6:
+                    ac_sum(button);
+                    break;
+                case 7:
+                    ac_sub(button);
+                    break;
+                case 8:
+                    sin_fun(button);
+                    break;
+                case 9:
+                    cos_fun(button);
+                    break;
+                case 10:
+                    tan_fun(button);
+                    break;
+                case 11:
+                    pow_fun(button);
+                    break;
+                case 12:
+                    total_fun(button); // FUNCION DE IGUAL
+                    break;
+                case 13:
+                    clear_fun();
+                    break;
+                default:
+                    System.err.println("ButtonController - drawOnScreen: case else{ --- }");
+                    break;
+            }
 
-            if(Calculadora.getEntrada1()==0.0 && Calculadora.getEntrada2()==0.0 ){ screencontroller.drawOnScreen("Undefined"); }
-            else if(Calculadora.getEntrada2()==0.0 ){ screencontroller.drawOnScreen("Infinity"); }
-            else{ screencontroller.drawOnScreen(String.valueOf(buttonService.divide())); }
-            Calculadora.setOperation(-1);
         }
+
+
     }
 
-    public static void multiply(){
+    public static void divide(Button button){
+        Calculadora.setNextOperation(1); // siguiente operacion, esta
         if(Calculadora.getOperation()==-1){
-            Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
-            Calculadora.setOperation(1);
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
         }
-        else{
-            Calculadora.setEntrada2(Double.parseDouble(screencontroller.getTextView()));
+        else {
+            System.out.println("== info: DIVIDE()");
 
-            screencontroller.drawOnScreen(String.valueOf(buttonService.multiply()));
+            if (Calculadora.getEntrada1() == 0.0 && Calculadora.getEntrada2() == 0.0) {
+                screencontroller.drawOnScreen("Undefined");
+            } else if (Calculadora.getEntrada2() == 0.0) {
+                screencontroller.drawOnScreen("Infinity");
+            } else {
+                screencontroller.drawOnScreen(String.valueOf(buttonService.divide()));
+            }
             Calculadora.setOperation(-1);
+
         }
     }
 
-    public static void subtract(){
-        buttonService.subtract();
+    public static void multiply(Button button){
     }
 
-    public static void decimal_fun(){
+    public static void subtract(Button button){
+    }
+
+    public static void decimal_fun(Button button){
         buttonService.decimal_fun();
     }
 
-    public static void sum_fun(){
+    public static void sum_fun(Button button){
         buttonService.sum_fun();
     }
 
-    public static void ac_sum() {
+    public static void ac_sum(Button button) {
         buttonService.ac_sum();
     }
 
-    public static void ac_sub(){
+    public static void ac_sub(Button button){
         buttonService.ac_sub();
     }
 
-    public static void sin_fun(){
+    public static void sin_fun(Button button){
         buttonService.sin_fun();
     }
 
-    public static void cos_fun(){
+    public static void cos_fun(Button button){
         buttonService.cos_fun();
     }
 
-    public static void tan_fun(){
+    public static void tan_fun(Button button){
         buttonService.tan_fun();
     }
 
-    public static void pow_fun(){
+    public static void pow_fun(Button button){
         buttonService.pow_fun();
     }
 
-    public static void total_fun(){
-        buttonService.total_fun();
+    public static void total_fun(Button button){
+        Calculadora.setOperation(Calculadora.getNextOperation()); // la operacion es la siguiente operacion
+        Calculadora.setNextOperation(0); // ninguna operacion
+        drawOnScreen(button);
     }
 
     public static void clear_fun() {
         buttonService.clear_fun();
         screencontroller.clearScreen();
-        System.out.println("==== LIMPIADO <°-°>");
+        System.out.println("==== info: CLEAR_FUN()");
     }
+
+    public static void assigOperation(Button button){
+        if(Calculadora.getOperation()==0){
+            Calculadora.setOperation(-1);
+        }
+        else if(Calculadora.getOperation()==-1){
+            String draw = screencontroller.getTextView()+buttonService.getText(button);
+            Calculadora.setEntrada1(Double.parseDouble(draw));
+            screencontroller.drawOnScreen(draw);
+        }
+        else if(Calculadora.getOperation()==-2){
+            String draw = screencontroller.getTextView()+buttonService.getText(button);
+            Calculadora.setEntrada2(Double.parseDouble(draw));
+            screencontroller.drawOnScreen(draw);
+        }
+        else{
+            System.err.println("ButtonController - assigOperation: case else{ --- }");
+        }
+    }
+
+
 }
 

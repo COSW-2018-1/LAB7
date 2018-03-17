@@ -46,7 +46,10 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double subtract() {
-        return 0;
+        Double num1 = Calculadora.getEntrada1();
+        Double num2 = Calculadora.getEntrada2();
+
+        return num1-num2;
     }
 
     @Override
@@ -91,15 +94,11 @@ public class ButtonServiceImpl implements ButtonService {
     }
 
     @Override
-    public double total_fun() {
-        return 0;
-    }
-
-    @Override
     public void clear_fun() {
-        Calculadora.setOperation(-1);//ninguna operacion
+        Calculadora.setOperation(0);//ninguna operacion
         Calculadora.setEntrada1(0.0);
         Calculadora.setEntrada2(0.0);
+        Calculadora.setNextOperation(0);// ninguna operacion siguiente
     }
 
 

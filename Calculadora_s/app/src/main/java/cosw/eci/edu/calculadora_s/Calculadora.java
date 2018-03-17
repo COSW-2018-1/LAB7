@@ -19,7 +19,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
     private Button sin, cos, tan, offFun, pow2, total, clearFun;
     private Button one, two, three, four, five, six, seven, eight, nine, zero;
     private static double entrada1, salida, entrada2; // datos de entrada, valores de resultado
-    private static int operation;
+    private static int operation, nextOperation; // second_fill: 33 en espera de parametros. nextOperation: siguiente operacion
 
 
 
@@ -31,7 +31,8 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         findByIdElementsView();
         setActionClickElementsView();
 
-        operation=-1; // -1: ninguna operacion pendiente
+        operation=-1; // 0:ninguna operacion pendiente, -1: generando primer parametro, -2: generando segundo parametro
+        nextOperation=0; // siguiente operacion: 0: ninguna operacion
 
         buttonController = new ButtonController(pantalla);
         screenController = new ScreenController(pantalla);
@@ -75,43 +76,43 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
                 buttonController.drawOnScreen(zero);
                 break;
             case R.id.btn_divide:
-                ButtonController.divide();
+                ButtonController.divide(div);
                 break;
             case R.id.btn_multiply:
-                ButtonController.multiply();
+                ButtonController.multiply(mult);
                 break;
             case R.id.btn_subtract:
-                ButtonController.subtract();
+                ButtonController.subtract(sub);
                 break;
             case R.id.btn_decimal:
-                ButtonController.decimal_fun();
+                ButtonController.decimal_fun(decimal);
                 break;
             case R.id.btn_sum:
-                ButtonController.sum_fun();
+                ButtonController.sum_fun(sum);
                 break;
             case R.id.btn_ac_sum:
-                ButtonController.ac_sum();
+                ButtonController.ac_sum(acsum);
                 break;
             case R.id.btn_ac_sub:
-                ButtonController.ac_sub();
+                ButtonController.ac_sub(acsub);
                 break;
             case R.id.btn_sin:
-                ButtonController.sin_fun();
+                ButtonController.sin_fun(sin);
                 break;
             case R.id.btn_cos:
-                ButtonController.cos_fun();
+                ButtonController.cos_fun(cos);
                 break;
             case R.id.btn_tan:
-                ButtonController.tan_fun();
+                ButtonController.tan_fun(tan);
                 break;
             case R.id.btn_off:
                 off_fun();
                 break;
             case R.id.btn_pow:
-                ButtonController.pow_fun();
+                ButtonController.pow_fun(pow2);
                 break;
             case R.id.btn_total:
-                ButtonController.total_fun();
+                ButtonController.total_fun(total); // FUNCION DE IGUAL
                 break;
             case R.id.btn_clear:
                 ButtonController.clear_fun();
@@ -212,6 +213,10 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
     public static void setOperation(int operation) {
         Calculadora.operation = operation;
     }
+
+    public static int getNextOperation() { return nextOperation; }
+
+    public static void setNextOperation(int nextOperation) { Calculadora.nextOperation = nextOperation; }
 
     private void off_fun(){
         finish();

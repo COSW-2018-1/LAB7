@@ -34,8 +34,6 @@ public interface ButtonService {
 
     public double pow_fun();
 
-    public double total_fun();
-
     public void clear_fun();
 
 }
