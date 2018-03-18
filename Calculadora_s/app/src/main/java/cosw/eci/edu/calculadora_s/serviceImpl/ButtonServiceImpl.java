@@ -57,12 +57,12 @@ public class ButtonServiceImpl implements ButtonService {
         Double num1 = Calculadora.getEntrada1();
         Double num2 = Calculadora.getEntrada2();
         Double decimalNumber;
+        String num2text = String.valueOf(num2);
 
-        String intN1 = String.valueOf(num1.intValue());
-        String  intN2 = String.valueOf(num2.intValue());
-
-        decimalNumber = Double.parseDouble(intN1+"."+intN2);
-
+        System.out.println(num1);
+        System.out.println(num2);
+        decimalNumber=num1+num2/num2text.length();
+        System.out.println("decimal: "+decimalNumber);
         return decimalNumber;
     }
 

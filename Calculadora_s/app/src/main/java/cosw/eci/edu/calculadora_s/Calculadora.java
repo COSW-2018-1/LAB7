@@ -9,6 +9,10 @@ import android.widget.EditText;
 import cosw.eci.edu.calculadora_s.controller.ButtonController;
 import cosw.eci.edu.calculadora_s.controller.ScreenController;
 
+/**
+ * Created by Sergio Perez: https://github.com/dark07perez
+ * Date: 15/03/18.
+ */
 public class Calculadora extends AppCompatActivity implements View.OnClickListener {
 
     private ButtonController buttonController;
@@ -74,6 +78,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
                 buttonController.drawOnScreen(three);
                 break;
             case R.id.btn_0:
+                //System.out.println("dramonscreen Claculadora: ");
                 buttonController.drawOnScreen(zero);
                 break;
             case R.id.btn_divide:

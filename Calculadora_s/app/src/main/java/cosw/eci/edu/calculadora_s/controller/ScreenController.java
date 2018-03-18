@@ -26,6 +26,7 @@ public class ScreenController {
     }
 
     public void drawOnScreen(String text){
+        //System.out.println("DRAW SCREEN "+ text);
         screenService.setTextScreen(text);
 
     }

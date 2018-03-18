@@ -28,8 +28,9 @@ public class ButtonController {
 
     public static void drawOnScreen(Button button){
         // 0:ninguna operacion pendiente, -1: generando primer parametro, -2: generando segundo parametro
-
+        //System.out.println("Buttoncontroller: "+button.getText().toString());
         if(Calculadora.getOperation()<0){
+            //System.out.println("if drawonscree buttcontroller");
             assigOperation(button);
         }
         else{
@@ -135,12 +136,12 @@ public class ButtonController {
         System.out.println("== info: DECIMAL()");
         Calculadora.setNextOperation(4); // siguiente operacion, esta
         if(Calculadora.getOperation()==-1){
-            screencontroller.clearScreen();
+            Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+            //screencontroller.clearScreen();
             Calculadora.setOperation(-2); // a generar segundo parametro
         }
         else {
             screencontroller.drawOnScreen(String.valueOf(buttonService.decimal_fun()));
-
             Calculadora.setOperation(-1);
         }
     }
@@ -213,6 +214,7 @@ public class ButtonController {
     }
 
     public static boolean assigOperation(Button button){
+        //System.out.println("ASSIGOperacition");
         if(Calculadora.getOperation()==0){
             Calculadora.setOperation(-1);
             drawOnScreen(button);
@@ -221,7 +223,6 @@ public class ButtonController {
         else if(Calculadora.getOperation()==-1){
             String inputText = buttonService.getText(button);
             String textScreen = screencontroller.getTextView();
-
             try {
                 Calculadora.setEntrada1(Double.parseDouble(inputText+textScreen));
                 screencontroller.drawOnScreen(textScreen+inputText);

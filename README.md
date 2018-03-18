@@ -1,3 +1,7 @@
+# ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO
+## Bogotá - Colombia
+
+
 # Introduction to Android Applications
 Introductory project to develop applications for Android.
 
@@ -48,3 +52,8 @@ Grading:
 * Fully working App  ----  grade >= 3,5  
 * Fully working App + 1 challenge working  -----  grade >= 4
 * Fully working App + 2 challenges working -----  grade >= 4
+
+
+# Final
+
+![alt tag](https://github.com/COSW-ECI/IntroductionAndroid/blob/master/calculadora_app.png)
