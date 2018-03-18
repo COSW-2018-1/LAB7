@@ -18,7 +18,7 @@ We will develop a calculator that works with reverse polish notation (RPN) as sh
 
 
 
-![alt tag](https://github.com/COSW-ECI/IntroductionAndroid/blob/master/Screen%20Shot%202016-11-01%20at%208.09.16%20PM.png)
+![alt tag](Screen%20Shot%202016-11-01%20at%208.09.16%20PM.png)
 
 
 
