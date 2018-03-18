@@ -56,4 +56,4 @@ Grading:
 
 # Final
 
-![alt tag](https://github.com/COSW-ECI/IntroductionAndroid/blob/master/calculadora_app.png)
+![alt tag](calculadora_app.png)
