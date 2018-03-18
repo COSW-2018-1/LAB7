@@ -54,13 +54,27 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double decimal_fun() {
-        return 0;
+        Double num1 = Calculadora.getEntrada1();
+        Double num2 = Calculadora.getEntrada2();
+        Double decimalNumber;
+
+        String intN1 = String.valueOf(num1.intValue());
+        String  intN2 = String.valueOf(num2.intValue());
+
+        decimalNumber = Double.parseDouble(intN1+"."+intN2);
+
+        System.out.println(intN1);
+        System.out.println(intN2);
+        System.out.println(decimalNumber);
+        return decimalNumber;
     }
 
     @Override
-    public double sum_fun() {
+    public double sum_fun(){
+    Double num1 = Calculadora.getEntrada1();
+    Double num2 = Calculadora.getEntrada2();
 
-        return 0;
+        return num1+num2;
     }
 
     @Override
@@ -95,7 +109,7 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public void clear_fun() {
-        Calculadora.setOperation(0);//ninguna operacion
+        Calculadora.setOperation(-1);//generando primer parametro
         Calculadora.setEntrada1(0.0);
         Calculadora.setEntrada2(0.0);
         Calculadora.setNextOperation(0);// ninguna operacion siguiente

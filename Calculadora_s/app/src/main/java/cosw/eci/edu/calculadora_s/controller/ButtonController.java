@@ -29,7 +29,7 @@ public class ButtonController {
     public static void drawOnScreen(Button button){
         // 0:ninguna operacion pendiente, -1: generando primer parametro, -2: generando segundo parametro
 
-        if(Calculadora.getOperation()<=0){
+        if(Calculadora.getOperation()<0){
             assigOperation(button);
         }
         else{
@@ -84,14 +84,13 @@ public class ButtonController {
     }
 
     public static void divide(Button button){
+        System.out.println("== info: DIVIDE()");
         Calculadora.setNextOperation(1); // siguiente operacion, esta
         if(Calculadora.getOperation()==-1){
             screencontroller.clearScreen();
             Calculadora.setOperation(-2); // a generar segundo parametro
         }
         else {
-            System.out.println("== info: DIVIDE()");
-
             if (Calculadora.getEntrada1() == 0.0 && Calculadora.getEntrada2() == 0.0) {
                 screencontroller.drawOnScreen("Undefined"); buttonService.clear_fun();
             } else if (Calculadora.getEntrada2() == 0.0) {
@@ -105,13 +104,45 @@ public class ButtonController {
     }
 
     public static void multiply(Button button){
+        System.out.println("== info: MULTIPLICA()");
+        Calculadora.setNextOperation(2); // siguiente operacion, esta
+        if(Calculadora.getOperation()==-1){
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
+        }
+        else {
+            screencontroller.drawOnScreen(String.valueOf(buttonService.multiply()));
+
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void subtract(Button button){
+        System.out.println("== info: RESTA()");
+        Calculadora.setNextOperation(3); // siguiente operacion, esta
+        if(Calculadora.getOperation()==-1){
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
+        }
+        else {
+            screencontroller.drawOnScreen(String.valueOf(buttonService.subtract()));
+
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void decimal_fun(Button button){
-        buttonService.decimal_fun();
+        System.out.println("== info: DECIMAL()");
+        Calculadora.setNextOperation(4); // siguiente operacion, esta
+        if(Calculadora.getOperation()==-1){
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
+        }
+        else {
+            screencontroller.drawOnScreen(String.valueOf(buttonService.decimal_fun()));
+
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void sum_fun(Button button){
@@ -151,14 +182,12 @@ public class ButtonController {
     public static void clear_fun() {
         buttonService.clear_fun();
         screencontroller.clearScreen();
-        System.out.println("==== info: CLEAR_FUN()");
+        System.out.println("=== info: CLEAR_FUN()");
     }
 
     public static void assigOperation(Button button){
-        if(Calculadora.getOperation()==0){
-            Calculadora.setOperation(-1);
-        }
-        else if(Calculadora.getOperation()==-1){
+
+        if(Calculadora.getOperation()==-1){
             String inputText = buttonService.getText(button);
             String textScreen = screencontroller.getTextView();
 
@@ -168,7 +197,7 @@ public class ButtonController {
             }catch (Exception e){
                 Calculadora.setEntrada1(Double.parseDouble(inputText));
                 screencontroller.drawOnScreen(inputText);
-                System.err.println(e);
+                System.err.println("Exception  setEntrada1 "+e);
             }
         }
         else if(Calculadora.getOperation()==-2){
@@ -181,7 +210,7 @@ public class ButtonController {
             }catch (Exception e){
                 Calculadora.setEntrada2(Double.parseDouble(inputText));
                 screencontroller.drawOnScreen(inputText);
-                System.err.println(e);
+                System.err.println("Exception  setEntrada2"+e);
             }
         }
         else{
