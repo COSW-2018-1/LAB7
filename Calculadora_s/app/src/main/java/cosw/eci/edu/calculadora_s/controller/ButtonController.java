@@ -181,11 +181,17 @@ public class ButtonController {
     }
 
     public static void cos_fun(Button button){
-        buttonService.cos_fun();
+        System.out.println("== info: COS()");
+        Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+        screencontroller.drawOnScreen(String.valueOf(buttonService.cos_fun()));
+        buttonService.clear_vars();
     }
 
     public static void tan_fun(Button button){
-        buttonService.tan_fun();
+        System.out.println("== info: TAN()");
+        Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+        screencontroller.drawOnScreen(String.valueOf(buttonService.tan_fun()));
+        buttonService.clear_vars();
     }
 
     public static void memory_r(Button button){
@@ -235,7 +241,7 @@ public class ButtonController {
             }catch (Exception e){
                 Calculadora.setEntrada2(Double.parseDouble(inputText));
                 screencontroller.drawOnScreen(inputText);
-                System.err.println("Exception  setEntrada2"+e);
+                System.err.println("Exception  setEntrada2" +e);
             }
         }
         else{
