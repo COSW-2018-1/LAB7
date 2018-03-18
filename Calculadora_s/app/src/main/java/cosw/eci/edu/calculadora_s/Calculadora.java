@@ -16,11 +16,11 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
 
     public EditText pantalla;
     private Button sum, sub, div, mult, decimal, acsum, acsub;
-    private Button sin, cos, tan, offFun, pow2, total, clearFun;
+    private Button sin, cos, tan, offFun, memory_r, total, clearFun;
     private Button one, two, three, four, five, six, seven, eight, nine, zero;
     private static double entrada1, salida, entrada2; // datos de entrada, valores de resultado
     private static int operation, nextOperation; // second_fill: 33 en espera de parametros. nextOperation: siguiente operacion
-
+    private static double ac_memory; // memoria
 
 
     @Override
@@ -33,6 +33,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
 
         operation=-1; // 0:ninguna operacion pendiente, -1: generando primer parametro, -2: generando segundo parametro
         nextOperation=0; // siguiente operacion: 0: ninguna operacion
+        ac_memory = 0; // Memory
 
         buttonController = new ButtonController(pantalla);
         screenController = new ScreenController(pantalla);
@@ -109,7 +110,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
                 off_fun();
                 break;
             case R.id.btn_pow:
-                ButtonController.pow_fun(pow2);
+                ButtonController.pow_fun(memory_r);
                 break;
             case R.id.btn_total:
                 ButtonController.total_fun(total); // FUNCION DE IGUAL
@@ -139,7 +140,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         cos = findViewById(R.id.btn_cos);
         tan = findViewById(R.id.btn_tan);
         offFun = findViewById(R.id.btn_off);
-        pow2 = findViewById(R.id.btn_pow);
+        memory_r = findViewById(R.id.btn_memory_r);
         total = findViewById(R.id.btn_total);
         clearFun = findViewById(R.id.btn_clear);
 
@@ -168,7 +169,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         cos.setOnClickListener(this);
         tan.setOnClickListener(this);
         offFun.setOnClickListener(this);
-        pow2.setOnClickListener(this);
+        memory_r.setOnClickListener(this);
         total.setOnClickListener(this);
         clearFun.setOnClickListener(this);
 
@@ -217,6 +218,10 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
     public static int getNextOperation() { return nextOperation; }
 
     public static void setNextOperation(int nextOperation) { Calculadora.nextOperation = nextOperation; }
+
+    public static double getAc_sum() { return ac_memory; }
+
+    public static void setAc_sum(double ac_sum) { Calculadora.ac_memory = ac_memory; }
 
     private void off_fun(){
         finish();

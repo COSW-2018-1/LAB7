@@ -63,17 +63,13 @@ public class ButtonServiceImpl implements ButtonService {
 
         decimalNumber = Double.parseDouble(intN1+"."+intN2);
 
-        System.out.println(intN1);
-        System.out.println(intN2);
-        System.out.println(decimalNumber);
         return decimalNumber;
     }
 
     @Override
     public double sum_fun(){
-    Double num1 = Calculadora.getEntrada1();
-    Double num2 = Calculadora.getEntrada2();
-
+        Double num1 = Calculadora.getEntrada1();
+        Double num2 = Calculadora.getEntrada2();
         return num1+num2;
     }
 
@@ -103,7 +99,7 @@ public class ButtonServiceImpl implements ButtonService {
     }
 
     @Override
-    public double pow_fun() {
+    public double memory_r() {
         return 0;
     }
 

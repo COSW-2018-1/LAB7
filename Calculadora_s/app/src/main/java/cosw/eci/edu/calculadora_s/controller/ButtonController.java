@@ -65,7 +65,7 @@ public class ButtonController {
                     tan_fun(button);
                     break;
                 case 11:
-                    pow_fun(button);
+                    memory_r(button);
                     break;
                 case 12:
                     total_fun(button); // FUNCION DE IGUAL
@@ -146,11 +146,31 @@ public class ButtonController {
     }
 
     public static void sum_fun(Button button){
-        buttonService.sum_fun();
+        System.out.println("== info: SUMA()");
+        Calculadora.setNextOperation(5); // siguiente operacion, esta
+        if(Calculadora.getOperation()==-1){
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
+        }
+        else {
+            screencontroller.drawOnScreen(String.valueOf(buttonService.sum_fun()));
+
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void ac_sum(Button button) {
-        buttonService.ac_sum();
+        System.out.println("== info: AC+()");
+        Calculadora.setNextOperation(6); // siguiente operacion, esta
+        if(Calculadora.getOperation()==-1){
+            screencontroller.clearScreen();
+            Calculadora.setOperation(-2); // a generar segundo parametro
+        }
+        else {
+            screencontroller.drawOnScreen(String.valueOf(buttonService.sum_fun()));
+
+            Calculadora.setOperation(-1);
+        }
     }
 
     public static void ac_sub(Button button){
@@ -169,8 +189,8 @@ public class ButtonController {
         buttonService.tan_fun();
     }
 
-    public static void pow_fun(Button button){
-        buttonService.pow_fun();
+    public static void memory_r(Button button){
+        buttonService.memory_r();
     }
 
     public static void total_fun(Button button){

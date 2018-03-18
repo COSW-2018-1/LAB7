@@ -355,17 +355,17 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_pow"
+            android:id="@+id/btn_memory_r"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="@android:color/holo_green_dark"
+            android:padding="12sp"
+            android:text="MR"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="x²"/>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_total"

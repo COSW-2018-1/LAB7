@@ -32,7 +32,7 @@ public interface ButtonService {
 
     public double tan_fun();
 
-    public double pow_fun();
+    public double memory_r();
 
     public void clear_fun();
 
