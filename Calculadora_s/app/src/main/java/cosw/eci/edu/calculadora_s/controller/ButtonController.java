@@ -174,7 +174,10 @@ public class ButtonController {
     }
 
     public static void sin_fun(Button button){
-        buttonService.sin_fun();
+        System.out.println("== info: SIN()");
+        Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+        screencontroller.drawOnScreen(String.valueOf(buttonService.sin_fun()));
+        buttonService.clear_vars();
     }
 
     public static void cos_fun(Button button){
@@ -215,7 +218,7 @@ public class ButtonController {
 
             try {
                 Calculadora.setEntrada1(Double.parseDouble(inputText+textScreen));
-                screencontroller.drawOnScreen(inputText+textScreen);
+                screencontroller.drawOnScreen(textScreen+inputText);
             }catch (Exception e){
                 Calculadora.setEntrada1(Double.parseDouble(inputText));
                 screencontroller.drawOnScreen(inputText);
@@ -228,7 +231,7 @@ public class ButtonController {
 
             try {
                 Calculadora.setEntrada2(Double.parseDouble(inputText+textScreen));
-                screencontroller.drawOnScreen(inputText+textScreen);
+                screencontroller.drawOnScreen(textScreen+inputText);
             }catch (Exception e){
                 Calculadora.setEntrada2(Double.parseDouble(inputText));
                 screencontroller.drawOnScreen(inputText);

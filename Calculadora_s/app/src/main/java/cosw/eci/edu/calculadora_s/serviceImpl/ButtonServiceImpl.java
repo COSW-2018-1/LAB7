@@ -70,6 +70,7 @@ public class ButtonServiceImpl implements ButtonService {
     public double sum_fun(){
         Double num1 = Calculadora.getEntrada1();
         Double num2 = Calculadora.getEntrada2();
+
         return num1+num2;
     }
 
@@ -98,12 +99,17 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double cos_fun() {
-        return 0;
+        Double num = Calculadora.getEntrada1();
+
+        return Math.cos(num);
+
     }
 
     @Override
     public double tan_fun() {
-        return 0;
+        Double num = Calculadora.getEntrada1();
+
+        return Math.tan(num);
     }
 
     @Override

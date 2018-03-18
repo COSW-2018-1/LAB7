@@ -19,19 +19,7 @@ public class ScreenServiceImpl implements ScreenService {
 
     @Override
     public void setTextScreen(String text) {
-        String newText="";
-        String textOld=text;
-        if(text.length()>10){
-            for(char c: textOld.toCharArray()){
-                newText+=c;
-                if(newText.length()>10){
-                    break;
-                }
-            }
-            System.err.println("ScreenController: length size of text > 10");
-            textOld=newText;
-        }
-        pantalla.setText(textOld);
+        pantalla.setText(text);
     }
 
     @Override

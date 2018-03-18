@@ -18,7 +18,7 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
     private Button sum, sub, div, mult, decimal, acsum, acsub;
     private Button sin, cos, tan, offFun, memory_r, total, clearFun;
     private Button one, two, three, four, five, six, seven, eight, nine, zero;
-    private static double entrada1, salida, entrada2; // datos de entrada, valores de resultado
+    private static double entrada1, entrada2; // datos de entrada, valores de resultado
     private static int operation, nextOperation; // second_fill: 33 en espera de parametros. nextOperation: siguiente operacion
     private static double ac_memory; // memoria
 
@@ -189,23 +189,11 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
         return entrada1;
     }
 
-    public static void setEntrada1(double entrada) {
-        Calculadora.entrada1 = entrada;
-    }
+    public static void setEntrada1(double entrada) { Calculadora.entrada1 = entrada; }
 
     public static double getEntrada2() { return entrada2; }
 
-    public static void setEntrada2(double entrada) {
-        Calculadora.entrada2 = entrada;
-    }
-
-    public static double getSalida() {
-        return salida;
-    }
-
-    public static void setSalida(double salida) {
-        Calculadora.salida = salida;
-    }
+    public static void setEntrada2(double entrada) { Calculadora.entrada2 = entrada;}
 
     public static int getOperation() {
         return operation;
