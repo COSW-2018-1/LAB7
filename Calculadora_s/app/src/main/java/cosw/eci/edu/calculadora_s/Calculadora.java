@@ -109,8 +109,8 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
             case R.id.btn_off:
                 off_fun();
                 break;
-            case R.id.btn_pow:
-                ButtonController.pow_fun(memory_r);
+            case R.id.btn_memory_r:
+                ButtonController.memory_r(memory_r);
                 break;
             case R.id.btn_total:
                 ButtonController.total_fun(total); // FUNCION DE IGUAL
@@ -219,9 +219,9 @@ public class Calculadora extends AppCompatActivity implements View.OnClickListen
 
     public static void setNextOperation(int nextOperation) { Calculadora.nextOperation = nextOperation; }
 
-    public static double getAc_sum() { return ac_memory; }
+    public static double getAc_memory() { return ac_memory; }
 
-    public static void setAc_sum(double ac_sum) { Calculadora.ac_memory = ac_memory; }
+    public static void setAc_memory(double ac_memory) { Calculadora.ac_memory = ac_memory; }
 
     private void off_fun(){
         finish();

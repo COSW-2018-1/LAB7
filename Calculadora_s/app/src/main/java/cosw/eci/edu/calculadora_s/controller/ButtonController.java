@@ -74,7 +74,7 @@ public class ButtonController {
                     clear_fun();
                     break;
                 default:
-                    System.err.println("ButtonController - drawOnScreen: case else{ --- }");
+                    System.err.println("ButtonController - drawOnScreen: case else{ " +Calculadora.getOperation()+" }");
                     break;
             }
 
@@ -92,9 +92,9 @@ public class ButtonController {
         }
         else {
             if (Calculadora.getEntrada1() == 0.0 && Calculadora.getEntrada2() == 0.0) {
-                screencontroller.drawOnScreen("Undefined"); buttonService.clear_fun();
+                screencontroller.drawOnScreen("Undefined"); buttonService.clear_vars();
             } else if (Calculadora.getEntrada2() == 0.0) {
-                screencontroller.drawOnScreen("Infinity"); buttonService.clear_fun();
+                screencontroller.drawOnScreen("Infinity"); buttonService.clear_vars();
             } else {
                 screencontroller.drawOnScreen(String.valueOf(buttonService.divide()));
             }
@@ -161,20 +161,16 @@ public class ButtonController {
 
     public static void ac_sum(Button button) {
         System.out.println("== info: AC+()");
-        Calculadora.setNextOperation(6); // siguiente operacion, esta
-        if(Calculadora.getOperation()==-1){
-            screencontroller.clearScreen();
-            Calculadora.setOperation(-2); // a generar segundo parametro
-        }
-        else {
-            screencontroller.drawOnScreen(String.valueOf(buttonService.sum_fun()));
-
-            Calculadora.setOperation(-1);
-        }
+        Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+        Calculadora.setAc_memory(buttonService.ac_sum());
+        buttonService.clear_vars();
     }
 
     public static void ac_sub(Button button){
-        buttonService.ac_sub();
+        System.out.println("== info: AC-()");
+        Calculadora.setEntrada1(Double.parseDouble(screencontroller.getTextView()));
+        Calculadora.setAc_memory(buttonService.ac_sub());
+        buttonService.clear_vars();
     }
 
     public static void sin_fun(Button button){
@@ -190,7 +186,9 @@ public class ButtonController {
     }
 
     public static void memory_r(Button button){
-        buttonService.memory_r();
+        System.out.println("== info: AC Read");
+        screencontroller.drawOnScreen(String.valueOf(buttonService.memory_r()));
+        buttonService.clear_vars();
     }
 
     public static void total_fun(Button button){
@@ -199,15 +197,19 @@ public class ButtonController {
         drawOnScreen(button);
     }
 
-    public static void clear_fun() {
-        buttonService.clear_fun();
+    public static void clear_fun() { // no borra la memoria *memory_r*
+        buttonService.clear_vars();
         screencontroller.clearScreen();
         System.out.println("=== info: CLEAR_FUN()");
     }
 
-    public static void assigOperation(Button button){
-
-        if(Calculadora.getOperation()==-1){
+    public static boolean assigOperation(Button button){
+        if(Calculadora.getOperation()==0){
+            Calculadora.setOperation(-1);
+            drawOnScreen(button);
+            return true;
+        }
+        else if(Calculadora.getOperation()==-1){
             String inputText = buttonService.getText(button);
             String textScreen = screencontroller.getTextView();
 
@@ -236,6 +238,7 @@ public class ButtonController {
         else{
             System.err.println("ButtonController - assigOperation: case else{ --- }");
         }
+        return true;
     }
 
 

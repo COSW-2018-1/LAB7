@@ -300,39 +300,39 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="#1b1b1b"
+            android:padding="15sp"
+            android:text="sin"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="sin"/>
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/btn_cos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="#1b1b1b"
+            android:padding="15sp"
+            android:text="cos"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="cos"/>
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/btn_tan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="12sp"
-            android:background="#1b1b1b"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
             android:autoSizeTextType="uniform"
+            android:background="#1b1b1b"
+            android:padding="15sp"
+            android:text="tan"
+            android:textColor="#ffffff"
             android:textSize="100sp"
-            android:text="tan"/>
+            android:textStyle="italic" />
     </LinearLayout>
 
     <!-- pow2, total, clear -->

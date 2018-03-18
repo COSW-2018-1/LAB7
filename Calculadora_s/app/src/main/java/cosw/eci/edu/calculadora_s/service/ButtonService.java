@@ -34,6 +34,6 @@ public interface ButtonService {
 
     public double memory_r();
 
-    public void clear_fun();
+    public void clear_vars();
 
 }

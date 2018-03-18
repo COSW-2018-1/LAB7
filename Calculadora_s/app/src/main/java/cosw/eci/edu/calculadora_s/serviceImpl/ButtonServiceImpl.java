@@ -75,17 +75,25 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double ac_sum() {
-        return 0;
+        //memoria + pantalla
+        Double memory = Calculadora.getAc_memory()+Calculadora.getEntrada1();
+
+        return memory;
     }
 
     @Override
-    public double ac_sub() {
-        return 0;
+    public double ac_sub(){
+        //memoria - pantalla
+        Double memory = Calculadora.getAc_memory()-Calculadora.getEntrada1();
+
+        return memory;
     }
 
     @Override
-    public double sin_fun() {
-        return 0;
+    public double sin_fun(){
+        Double num = Calculadora.getEntrada1();
+
+        return Math.sin(num);
     }
 
     @Override
@@ -100,11 +108,13 @@ public class ButtonServiceImpl implements ButtonService {
 
     @Override
     public double memory_r() {
-        return 0;
+        Double num = Calculadora.getAc_memory();
+
+        return num;
     }
 
     @Override
-    public void clear_fun() {
+    public void clear_vars() {
         Calculadora.setOperation(-1);//generando primer parametro
         Calculadora.setEntrada1(0.0);
         Calculadora.setEntrada2(0.0);
